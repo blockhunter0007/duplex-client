@@ -301,6 +301,7 @@ Result:
 Quick Reference
 
 Method| Endpoint| Purpose
+|---|---|---|
 "GET"| "/"| Check API/backend status
 "GET"| "/eject"| Eject backend
 "GET"| "/reload"| Reload backend
