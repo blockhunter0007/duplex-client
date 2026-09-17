@@ -2,7 +2,7 @@ Duplex client HTTP API
 
 Base URL: "http://127.0.0.1:65534"
 API Version: "1.0.0"
-Mod Version: "1.26.45"
+Mod Version: 1.26.3x-1.26.5x
 
 Overview
 
@@ -172,18 +172,6 @@ A frontend can call "/get_config" when opening or refreshing its UI to synchroni
 
 ---
 
-"GET /get_version"
-
-Returns the currently running mod version.
-
-Response
-
-{
-  "version": "1.26.45"
-}
-
----
-
 "GET /get_all_modules"
 
 Returns all modules exposed by the backend and their configuration metadata.
@@ -318,7 +306,6 @@ Method| Endpoint| Purpose
 "GET"| "/get_module_config/{module_id}"| Get a module's configuration
 "GET"| "/get_working"| Get currently working modules
 "GET"| "/get_config"| Get current configuration
-"GET"| "/get_version"| Get mod version
 "GET"| "/get_all_modules"| Get module information
 "GET"| "/get_modules_by_category/{category}"| Get modules by category
 
@@ -329,4 +316,4 @@ Base URL
 http://127.0.0.1:65534
 
 API Version: "1.0.0"
-Mod Version: "1.26.45"
+Mod Version: "1.26.3x-1.26.5x"
