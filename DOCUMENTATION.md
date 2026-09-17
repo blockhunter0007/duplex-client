@@ -25,7 +25,8 @@ Response
 {
   "injected": true,
   "injection_time": 3.304103374481201,
-  "api_version": "1.0.0"
+  "api_version": "1.0.0",
+  "version": "injected version"
 }
 
 ---
