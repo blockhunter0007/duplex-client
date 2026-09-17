@@ -4,7 +4,7 @@ Base URL: "http://127.0.0.1:65534"
 
 API Version: "1.0.0"
 
-Mod Version: 1.26.3x-1.26.5x
+Supported game versions: 1.26.3x-1.26.5x
 
 Overview
 
@@ -320,4 +320,4 @@ Base URL
 http://127.0.0.1:65534
 
 API Version: "1.0.0"
-Mod Version: "1.26.3x-1.26.5x"
+Supported game versions: "1.26.3x-1.26.5x"
