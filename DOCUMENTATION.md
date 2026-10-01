@@ -33,7 +33,8 @@ Response
   "version": "1.26.52",
   "supported": "1.26.51",
   "sp_message": "ver_family"
-} ```
+}
+```
 
 if injected is false you have to use the API method /inject first before the client works.
 
