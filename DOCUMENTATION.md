@@ -55,9 +55,11 @@ Ejects the current backend.
 
 Response
 
+```json
 {
   "success": true
 }
+```
 
 IJN
 
@@ -71,9 +73,11 @@ this method shouldn't be called usually
 
 Response
 
+```json
 {
   "success": true
 }
+```
 
 IJN
 
@@ -95,9 +99,11 @@ GET /toggle_module/reach/false
 
 Response
 
+```json
 {
   "success": true
 }
+```
 
 IJN
 
@@ -115,9 +121,11 @@ This sets the "reach" module's value to "6.0".
 
 Response
 
+```json
 {
   "success": true
 }
+```
 
 IJN
 
@@ -133,6 +141,7 @@ GET /get_module_config/reach
 
 Response
 
+```json
 {
   "config": {
     "toggle": true,
@@ -140,6 +149,7 @@ Response
   },
   "success": true
 }
+```
 
 IJN
 
@@ -151,6 +161,7 @@ Returns the modules currently reported as working.
 
 Response
 
+```json
 {
   "working_modules": [
     "reach",
@@ -160,6 +171,7 @@ Response
     "phasefly"
   ]
 }
+```
 
 Example Usage
 
@@ -175,6 +187,7 @@ Returns the current configuration of all modules.
 
 Response
 
+```json
 {
   "reach": {
     "toggle": true,
@@ -198,6 +211,7 @@ Response
     "value": 0.1000000015
   }
 }
+```
 
 Example Usage
 
@@ -213,6 +227,7 @@ Returns all modules exposed by the backend and their configuration metadata.
 
 Response
 
+```json
 {
   "all_modules": {
     "reach": {
@@ -244,6 +259,7 @@ Response
     }
   }
 }
+```
 
 Example Usage
 
@@ -274,6 +290,7 @@ GET /get_modules_by_category/combat
 
 Response
 
+```json
 {
   "category": "combat",
   "modules": [
@@ -281,6 +298,7 @@ Response
     "hitbox"
   ]
 }
+```
 
 Another example:
 
@@ -331,6 +349,7 @@ GET http://127.0.0.1:65534/get_module_config/reach
 
 Result:
 
+```json
 {
   "config": {
     "toggle": true,
@@ -338,6 +357,7 @@ Result:
   },
   "success": true
 }
+```
 
 ---
 
