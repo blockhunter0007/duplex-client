@@ -43,7 +43,7 @@ The "injection_time" represents how long the client took to inject in seconds
 
 The "api_version" may change when the backend updates,so don't rely on this documentation as this only updates when major changes to the user facing side are made.
 
-The "version" /is the game version,the software is currently injected in. this value might alsow change due to injecting into different game versions, furthermore the currently supported versions might change without notice,the app will inject even though the version might not be supported indicated by the "sp_message" key in the json. This can lead to crashes bans ect.
+The "version" /is the game version,the software is currently injected in. this value might alsow change due to injecting into different game versions, furthermore the currently supported versions might change without notice,the app will inject even though the version might not be supported indicated by the "sp_message" key in the json.
 
 The "supported" key gives you information about what game version the injector used as base.
 
