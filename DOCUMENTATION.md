@@ -179,7 +179,7 @@ Example Usage
 
 A UI can use this endpoint to determine which modules are currently available before displaying controls.
 
-INJ
+IJN
 
 ---
 
@@ -219,7 +219,7 @@ Example Usage
 
 A frontend can call "/get_config" when opening or refreshing its UI to synchronize its controls with the current backend state.
 
-INJ
+IJN
 
 ---
 
@@ -279,6 +279,8 @@ Value
 3.0        6.0
 
 For a module such as "phasefly", which has no value metadata, the UI only needs to provide a toggle.
+
+IJN
 
 ---
 
@@ -360,6 +362,8 @@ Result:
   "success": true
 }
 ```
+
+IJN
 
 ---
 
