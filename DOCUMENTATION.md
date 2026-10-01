@@ -26,14 +26,14 @@ Returns the current API/backend status.
 
 Response
 
-{
+```json {
   "injected": true,
   "injection_time": 3.304103374481201,
   "api_version": "1.0.0",
   "version": "1.26.52",
   "supported": "1.26.51",
   "sp_message": "ver_family"
-}
+}```
 
 if injected is false you have to use the API method /inject first before the client works.
 
