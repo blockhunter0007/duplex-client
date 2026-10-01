@@ -1,10 +1,10 @@
 Duplex client HTTP API
 
-Base URL: "http://127.0.0.1:65534"
+Base URL: http://127.0.0.1:65534
 
-API Version: "1.0.0"
+API Version: 1.0.0
 
-Supported game versions: 1.26.3x-1.26.5x
+Currently supported game versions: 1.26.3x-1.26.5x
 
 Overview
 
@@ -13,6 +13,8 @@ The Duplex Client exposes a local HTTP API that allows external applications and
 All endpoints are available through:
 
 http://127.0.0.1:65534
+
+IJN: Injection needed
 
 ---
 
@@ -28,8 +30,20 @@ Response
   "injected": true,
   "injection_time": 3.304103374481201,
   "api_version": "1.0.0",
-  "version": "injected version"
+  "version": "1.26.52",
+  "supported": "1.26.51",
+  "sp_message": "ver_family"
 }
+
+if injected is false you have to use the API method /inject first before the client works.
+
+The "api_version" may change when the backend updates,so don't rely on this documentation as this only updates when major changes to the user facing side are made.
+
+The "version" /is the game version,the software is currently injected in. this value might alsow change due to injecting into different game versions, furthermore the currently supported versions might change without notice,the app will inject even though the version might not be supported indicated by the "sp_message" key in the json. This can lead to crashes bans ect.
+
+The "supported" key gives you information about what game version the injector used as base.
+
+The "sp_message" key gives information about the compatibility between the client and the game, it can be "ver_family" if for example 1.26.52 isn't supported but 1.26.51 is so it's just falls back to the latest 5x version, it can be "fully" if the version is specifically supported and "latest" if the version has no supported version family and no supported version, it just falls back to the latest supported.
 
 ---
 
@@ -43,17 +57,23 @@ Response
   "success": true
 }
 
+IJN
+
 ---
 
 "GET /reload"
 
-Reloads the backend.
+Reloads the backend, it's equivalent to /eject + /inject.
+
+this method shouldn't be called usually
 
 Response
 
 {
   "success": true
 }
+
+IJN
 
 ---
 
@@ -77,6 +97,8 @@ Response
   "success": true
 }
 
+IJN
+
 ---
 
 "GET /set_module_value/{module_id}/{value}"
@@ -94,6 +116,8 @@ Response
 {
   "success": true
 }
+
+IJN
 
 ---
 
@@ -114,6 +138,8 @@ Response
   },
   "success": true
 }
+
+IJN
 
 ---
 
@@ -136,6 +162,8 @@ Response
 Example Usage
 
 A UI can use this endpoint to determine which modules are currently available before displaying controls.
+
+INJ
 
 ---
 
@@ -172,6 +200,8 @@ Response
 Example Usage
 
 A frontend can call "/get_config" when opening or refreshing its UI to synchronize its controls with the current backend state.
+
+INJ
 
 ---
 
@@ -256,6 +286,8 @@ GET /get_modules_by_category/movement
 
 would query the movement modules.
 
+IJN
+
 ---
 
 Example Frontend Flow
@@ -266,9 +298,18 @@ A frontend can use the API in a simple sequence.
 
 GET http://127.0.0.1:65534/
 
-2. Discover available modules
+if not injected call GET http://127.0.0.1:65534/inject
+
+2. Discover available modules together with the config
 
 GET http://127.0.0.1:65534/get_all_modules
+
+for the configuration and
+
+GET GET http://127.0.0.1:65534/get_working
+
+
+for the currently injected modules
 
 3. Get the current state
 
@@ -304,7 +345,7 @@ Method| Endpoint| Purpose
 |---|---|---|
 "GET"| "/"| Check API/backend status
 "GET"| "/eject"| Eject backend
-"GET"| "/reload"| Reload backend
+"GET"| "/reload"| Ejects and reinjects backend
 "GET"| "/toggle_module/{module_id}/{toggle}"| Enable/disable a module
 "GET"| "/set_module_value/{module_id}/{value}"| Set a module value
 "GET"| "/get_module_config/{module_id}"| Get a module's configuration
@@ -319,5 +360,5 @@ Base URL
 
 http://127.0.0.1:65534
 
-API Version: "1.0.0"
-Supported game versions: "1.26.3x-1.26.5x"
+API Version: 1.0.0
+Currently supported game versions: 1.26.3x-1.26.5x
