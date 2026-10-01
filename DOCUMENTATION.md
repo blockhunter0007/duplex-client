@@ -51,6 +51,20 @@ The "sp_message" key gives information about the compatibility between the clien
 
 ---
 
+"GET /inject"
+
+Injects the whole client into the game.
+
+Response
+
+```json
+{
+  "success": true
+}
+```
+
+---
+
 "GET /eject"
 
 Ejects the current backend.
