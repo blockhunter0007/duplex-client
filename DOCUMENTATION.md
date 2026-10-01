@@ -26,7 +26,8 @@ Returns the current API/backend status.
 
 Response
 
-```json {
+```json
+{
   "injected": true,
   "injection_time": 3.304103374481201,
   "api_version": "1.0.0",
