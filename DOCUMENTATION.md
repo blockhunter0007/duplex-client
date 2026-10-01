@@ -37,7 +37,9 @@ Response
 }
 ```
 
-if injected is false you have to use the API method /inject first before the client works.
+if "injected" is false you have to use the API method /inject first before the client works.
+
+The "injection_time" represents how long the client took to inject in seconds
 
 The "api_version" may change when the backend updates,so don't rely on this documentation as this only updates when major changes to the user facing side are made.
 
