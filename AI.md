@@ -30,20 +30,9 @@ The interface should have:
 
 3. Backend
 
-Base URL:
-
-"http://127.0.0.1:65534"
-
 Use "DOCUMENTATION.md" as the source of truth for the API.
 
-Implement a read-only dashboard using:
-
-- "GET /" — backend and version status.
-- "GET /get_all_modules" — module metadata.
-- "GET /get_working" — reported working modules.
-- "GET /get_config" — current module configuration.
-- "GET /get_modules_by_category/{category}" — category filtering.
-- "GET /get_module_config/{module_id}" — individual module configuration.
+Keep the timeout high (atleas t for the inject method because it might take longer)
 
 4. Dashboard
 
@@ -54,22 +43,14 @@ Display:
 - API version.
 - Current game version.
 - Supported base version.
-- Compatibility message.
+- Compatibility message. (warn if not fully supported
 - Injection duration, when available.
 
 Use clear labels and distinguish connection errors from compatibility information.
 
 5. Module explorer
 
-Build the module list dynamically from "/get_all_modules".
-
-For each module, display:
-
-- Module ID.
-- Category.
-- Whether it is reported as working.
-- Current configuration, when available.
-- Numeric metadata, if provided.
+Build the module list dynamically.
 
 Do not assume that every module has a numeric value. Modules without value metadata should be displayed without a numeric control.
 
@@ -79,13 +60,11 @@ Provide category filtering and a module details view.
 
 When the GUI opens:
 
-1. Request the backend status.
+1. Request the backend status. if its not injected inject it.
 2. Load module metadata.
 3. Load the working module list.
 4. Load the current configuration.
-5. Display the retrieved information.
-
-Allow the user to refresh the dashboard.
+5. Build the ui.
 
 Do not display example values as if they were live backend data.
 
@@ -113,10 +92,8 @@ Show understandable error messages and provide a way to retry read operations.
 - Do not silently replace failed API responses with sample data.
 - Keep the interface maintainable and easy to extend.
 
-9. Important limitations
+9. On Close
 
-This dashboard is intended for observing and inspecting backend state.
-
-Do not assume that a reported working module is safe, supported or compliant with the game's rules. Clearly distinguish backend-reported status from verified compatibility.
+ - Ask the user if they want to keep the backend injected or eject it
 
 If the documentation does not specify a behavior, do not invent it.
