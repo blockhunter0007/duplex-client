@@ -276,7 +276,7 @@ GET http://127.0.1:65534/get_modules
 
 GET http://127.0.1:65534/get_config
 
-5. Update the UI controls to reflect the current configuration
+5. Draw the UI and and bind events
 
 6. (Optional) Update the configuration of a module
 
