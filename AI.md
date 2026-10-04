@@ -11,7 +11,7 @@ The GUI should be designed as a local backend dashboard with a clean interface, 
 - Read "DOCUMENTATION.md" completely.
 - Understand the available endpoints, response formats and module metadata.
 - Do not invent API endpoints, response fields or backend capabilities.
-- If an implementation detail is missing, handle it gracefully instead of assuming behavior.
+- If an implementation detail is missing, handle it gracefully instead of assuming behaviour.
 
 2. Design
 
@@ -27,12 +27,13 @@ The interface should have:
 - Consistent spacing, borders and component sizes.
 - Accessible contrast and readable status indicators.
 - Loading, empty and error states.
+-
 
 3. Backend
 
 Use "DOCUMENTATION.md" as the source of truth for the API.
 
-Keep the timeout high (atleas t for the inject method because it might take longer)
+Keep the timeout high (at least for the inject method because it might take longer)
 
 4. Dashboard
 
@@ -56,7 +57,7 @@ Do not assume that every module has a numeric value. Modules without value metad
 
 Provide category filtering and a module details view.
 
-6. Synchronization
+6. Synchronisation
 
 When the GUI opens:
 
@@ -64,7 +65,7 @@ When the GUI opens:
 2. Load module metadata.
 3. Load the working module list.
 4. Load the current configuration.
-5. Build the ui.
+5. Build the UI.
 
 Do not display example values as if they were live backend data.
 
@@ -86,7 +87,7 @@ Show understandable error messages and provide a way to retry read operations.
 
 - Separate API communication from UI components.
 - Use reusable components.
-- Keep backend data and display state synchronized.
+- Keep backend data and display state synchronised.
 - Avoid unnecessary repeated requests.
 - Do not hardcode the module list.
 - Do not silently replace failed API responses with sample data.
@@ -94,6 +95,6 @@ Show understandable error messages and provide a way to retry read operations.
 
 9. On Close
 
- - Ask the user if they want to keep the backend injected or eject it
+ - Ask the user if they want to keep the backend injected or eject it.
 
-If the documentation does not specify a behavior, do not invent it.
+If the documentation does not specify a behaviour, do not invent it.
