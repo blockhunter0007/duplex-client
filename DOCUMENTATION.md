@@ -147,56 +147,6 @@ IJN
 
 ---
 
-"GET /get_module_config/{module_id}"
-
-Returns the current configuration of a specific module.
-
-Example
-
-GET /get_module_config/reach
-
-Response
-
-```json
-{
-  "config": {
-    "toggle": true,
-    "value": 6.0
-  },
-  "success": true
-}
-```
-
-IJN
-
----
-
-"GET /get_working"
-
-Returns the modules currently reported as working.
-
-Response
-
-```json
-{
-  "working_modules": [
-    "reach",
-    "forcecords",
-    "forcedisablecords",
-    "hitbox",
-    "phasefly"
-  ]
-}
-```
-
-Example Usage
-
-A UI can use this endpoint to determine which modules are currently available before displaying controls.
-
-IJN
-
----
-
 "GET /get_config"
 
 Returns the current configuration of all modules.
@@ -237,7 +187,7 @@ IJN
 
 ---
 
-"GET /get_all_modules"
+"GET /get_modules"
 
 Returns all modules exposed by the backend and their configuration metadata.
 
@@ -247,27 +197,33 @@ Response
 {
   "all_modules": {
     "reach": {
+      "injected": true,
       "category": "combat",
       "default_value": 3.0,
       "min_value": 3.0,
       "max_value": 6.0
     },
     "forcecords": {
+      "injected": true,
       "category": "visual"
     },
     "forcedisablecords": {
+      "injected": true,
       "category": "visual"
     },
     "hitbox": {
+      "injected": true,
       "category": "combat",
       "default_value": 0.6,
       "min_value": 0.6,
       "max_value": 10.0
     },
     "phasefly": {
+      "injected": true,
       "category": "movement"
     },
     "speed": {
+      "injected": true,
       "category": "movement",
       "default_value": 0.1000000015,
       "min_value": 0.1000000015,
@@ -298,86 +254,33 @@ IJN
 
 ---
 
-"GET /get_modules_by_category/{category}"
-
-Returns modules matching the requested category.
-
-Example
-
-GET /get_modules_by_category/combat
-
-Response
-
-```json
-{
-  "category": "combat",
-  "modules": [
-    "reach",
-    "hitbox"
-  ]
-}
-```
-
-Another example:
-
-GET /get_modules_by_category/movement
-
-would query the movement modules.
-
-IJN
-
----
-
 Example Frontend Flow
 
-A frontend can use the API in a simple sequence.
+A frontend can be initialised in the following way:
 
 1. Check whether the backend is available
 
 GET http://127.0.0.1:65534/
 
-if not injected call GET http://127.0.0.1:65534/inject
+2. If the backend is not injected, inject it
 
-2. Discover available modules together with the config
+GET http://127.0.1:65534/inject
 
-GET http://127.0.0.1:65534/get_all_modules
+3. Retrieve the modules, theyre configuration metadata, and the injection status
 
-for the configuration and
+GET http://127.0.1:65534/get_modules
 
-GET GET http://127.0.0.1:65534/get_working
+4. Retrieve the current configuration of all modules
 
+GET http://127.0.1:65534/get_config
 
-for the currently injected modules
+5. Update the UI controls to reflect the current configuration
 
-3. Get the current state
+6. (Optional) Update the configuration of a module
 
-GET http://127.0.0.1:65534/get_config
+GET http://127.0.1:65534/toggle_module/reach/true
 
-4. Change a module's state
-
-GET http://127.0.0.1:65534/toggle_module/reach/true
-
-5. Change its value
-
-GET http://127.0.0.1:65534/set_module_value/reach/6.0
-
-6. Verify the change
-
-GET http://127.0.0.1:65534/get_module_config/reach
-
-Result:
-
-```json
-{
-  "config": {
-    "toggle": true,
-    "value": 6.0
-  },
-  "success": true
-}
-```
-
-IJN
+GET http://127.0.1:65534/set_module_value/reach/6.0
 
 ---
 
@@ -386,15 +289,13 @@ Quick Reference
 Method| Endpoint| Purpose
 |---|---|---|
 "GET"| "/"| Check API/backend status
+"GET"| "/inject"| Inject backend
 "GET"| "/eject"| Eject backend
 "GET"| "/reload"| Ejects and reinjects backend
 "GET"| "/toggle_module/{module_id}/{toggle}"| Enable/disable a module
 "GET"| "/set_module_value/{module_id}/{value}"| Set a module value
-"GET"| "/get_module_config/{module_id}"| Get a module's configuration
-"GET"| "/get_working"| Get currently working modules
-"GET"| "/get_config"| Get current configuration
-"GET"| "/get_all_modules"| Get module information
-"GET"| "/get_modules_by_category/{category}"| Get modules by category
+"GET"| "/get_config"| Get current configuration of all modules
+"GET"| "/get_modules"| Get all modules, their configuration metadata and theyre injection status
 
 ---
 
