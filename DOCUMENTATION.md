@@ -55,6 +55,8 @@ The "sp_message" key gives information about the compatibility between the clien
 
 Injects the whole client into the game.
 
+WARNING: this API endpoint takes a lot of time to respond, keep a very high timeout like 999 seconds
+
 Response
 
 ```json
